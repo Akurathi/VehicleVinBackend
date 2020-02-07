@@ -15,8 +15,8 @@ public class VehicleVIN {
     VehicleVinService vehicleVinService;
 
     @PostMapping(value = "/getDetails", produces = "application/json")
+    @CrossOrigin(origins = "*")
     public List<VehicleDetails> getDetails(@RequestParam(name = "inputValue")String inputValue) throws JsonProcessingException {
-//        System.out.println("inputValue" + inputValue);
         return vehicleVinService.serviceMethod(inputValue);
     }
 }
