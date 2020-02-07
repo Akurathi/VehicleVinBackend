@@ -43,10 +43,22 @@ public class VehicleVinService {
         while (iter.hasNext()) {
             JsonNode jsonNode = iter.next();
             VehicleDetails v = new VehicleDetails();
-            v.setValue(jsonNode.get("Value").asText());
-            v.setValueId(jsonNode.get("ValueId").asText());
-            v.setVariable(jsonNode.get("Variable").asText());
-            v.setVariableId(jsonNode.get("VariableId").asInt());
+            if(jsonNode.get("Value").asText().equals("null") || jsonNode.get("Value").asText().equals("NULL"))
+                continue;
+            else
+                v.setValue(jsonNode.get("Value").asText());
+            if(jsonNode.get("ValueId").asText().equals("null") || jsonNode.get("ValueId").asText().equals("NULL"))
+                continue;
+            else
+                v.setValueId(jsonNode.get("ValueId").asText());
+            if(jsonNode.get("Variable").asText().equals("null") || jsonNode.get("Variable").asText().equals("NULL"))
+                continue;
+            else
+                v.setVariable(jsonNode.get("Variable").asText());
+            if(jsonNode.get("VariableId").asText().equals("null") || jsonNode.get("VariableId").asText().equals("NULL"))
+                continue;
+            else
+                v.setVariableId(jsonNode.get("VariableId").asInt());
             finalRes.add(v);
         }
 
